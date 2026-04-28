@@ -1,0 +1,43 @@
+// Prisma schema for eva-web API
+// Reads from the same Postgres database as eva-run
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model AssertResult {
+  id          String   @id
+  test_id     String
+  run_id      String
+  name        String
+  criteria    String
+  passed      Boolean
+  score       Float
+  reason      String
+  threshold   Float
+  metadata    Json?
+  started_at  DateTime
+  finished_at DateTime
+  diff_ms     Int
+}
+
+model TestResult {
+  id                String   @id
+  run_id            String
+  provider          String?
+  model             String?
+  prompt            String
+  output            String
+  passed            Boolean
+  metadata          Json?
+  started_at        DateTime
+  assert_started_at DateTime
+  finished_at       DateTime
+  diff_ms           Int
+  assert_diff_ms    Int
+  output_diff_ms    Int
+}

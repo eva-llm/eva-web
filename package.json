@@ -1,0 +1,17 @@
+{
+  "name": "@eva-llm/eva-web",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter @eva-web/api dev\" \"pnpm --filter @eva-web/web dev\"",
+    "build": "pnpm --filter @eva-web/api build && pnpm --filter @eva-web/web build",
+    "api:dev": "pnpm --filter @eva-web/api dev",
+    "web:dev": "pnpm --filter @eva-web/web dev"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  },
+  "engines": {
+    "node": ">=22"
+  }
+}
